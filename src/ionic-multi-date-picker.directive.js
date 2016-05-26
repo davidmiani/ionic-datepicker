@@ -198,6 +198,11 @@
             var lastWeekDay = scope.weekNames.shift();
             scope.weekNames.push(lastWeekDay);
           }
+          
+          scope.innerTemplate = scope.inputObj.innerTemplate;
+          scope.vm = scope.inputObj.vm;
+          
+          scope.daySelectedCallback = scope.inputObj.daySelectedCallback;
         }
 
         function glueDate(date) {
@@ -810,6 +815,9 @@
             scope.selectedDates.addRemove(date.year, date.month, date.date, state);
             scope.dayList.repaint();
             scope.selectedDates.checkPeriod();
+            if (scope.daySelectedCallback) {
+              scope.daySelectedCallback(new Date(date.year, date.month, date.date));
+            }
 
           }
         }

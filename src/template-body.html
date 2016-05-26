@@ -138,7 +138,7 @@
     {{ calendar[7].name.title }}
   </div>
 </div>
-
+<ng-include src="innerTemplate" ng-if="innerTemplate"></ng-include>
 <div class="errors">
   <div ng-repeat="error in errors">
     {{ error[errorLanguage] }}
